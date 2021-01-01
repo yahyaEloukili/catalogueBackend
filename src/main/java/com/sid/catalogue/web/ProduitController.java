@@ -35,6 +35,10 @@ public class ProduitController {
 	public Page<Produit> listProduits(@RequestParam(name="page",defaultValue = "0") int page,@RequestParam(name="size",defaultValue = "5")int size){
 		return produitRepository.findAll(PageRequest.of(page, size));
 	}
+	@GetMapping(value="/test")
+	public String listProduits(){
+		return "Hello world";
+	}
 	@GetMapping(value="/listProduitsByDesignation")
 	public Page<Produit> listProduits2(@RequestParam(defaultValue = "0") int page,@RequestParam(defaultValue = "5")int size,@RequestParam(defaultValue = "")  String mc){
 		return produitRepository.findByDesignationContains(mc,PageRequest.of(page, size));
